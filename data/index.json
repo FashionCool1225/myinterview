@@ -1,0 +1,64 @@
+{
+  "categories": [
+    "Java 基础与核心特性",
+    "Java 集合框架",
+    "Java 并发编程",
+    "JVM 虚拟机",
+    "Spring 全家桶 & 微服务",
+    "关系型数据库（MySQL 为主）",
+    "缓存（Redis 为主）",
+    "消息中间件",
+    "计算机基础（网络 + 操作系统 + Linux）",
+    "数据结构与算法",
+    "设计模式",
+    "工程实践 & 架构设计 & 项目深挖"
+  ],
+  "categoryDesc": {
+    "Java 基础与核心特性": "语言基本功，全级别必问。基本数据类型、面向对象三大特性、String 体系、异常体系、IO/NIO、反射、注解、泛型、Java 8+ 新特性（Lambda、Stream、Optional）等。",
+    "Java 集合框架": "高频核心考点。List/Set/Map 整体体系，ArrayList/LinkedList/HashMap/ConcurrentHashMap 等核心类底层原理、扩容机制、哈希冲突、fail-fast、集合工具类。",
+    "Java 并发编程": "中高级重难点。线程基础、线程池、synchronized、Lock、volatile、ThreadLocal、CAS、AQS、原子类、并发工具类、死锁、线程安全、JMM 内存模型。",
+    "JVM 虚拟机": "中高级进阶、调优排障必问。内存区域划分、GC 算法与收集器、类加载、双亲委派、JVM 调优参数、OOM/内存泄漏排查、性能诊断工具。",
+    "Spring 全家桶 & 微服务": "企业开发核心，占比最高。IOC、AOP、Bean 生命周期、循环依赖、事务传播与隔离、自动配置、启动流程、注册发现、熔断降级、分布式锁/事务/ID 等。",
+    "关系型数据库（MySQL 为主）": "后端核心必考。存储引擎、索引原理与优化、事务 ACID 与隔离级别、MVCC、锁、三大日志、SQL 优化、explain、主从复制、分库分表、连接池。",
+    "缓存（Redis 为主）": "高并发核心考点。数据类型与场景、持久化、过期与淘汰、缓存三大问题（穿透/击穿/雪崩）、一致性、分布式锁、主从/哨兵/集群、Big Key。",
+    "消息中间件": "分布式核心组件。MQ 选型（Kafka/RabbitMQ/RocketMQ）、可靠性、幂等性、顺序性、积压处理、死信队列、架构原理、推拉模式。",
+    "计算机基础（网络 + 操作系统 + Linux）": "大厂必问底层功底。TCP/UDP、HTTP/HTTPS、Cookie/Session、跨域、DNS、URL 全流程；进程线程、死锁、虚拟内存；Linux 排查与日志。",
+    "数据结构与算法": "笔试 + 手撕代码必备。排序查找、链表、二叉树、哈希表、栈/队列、字符串、动态规划、贪心、回溯，及复杂度分析。",
+    "设计模式": "考察代码设计能力。六大原则、三大类模式、单例/工厂/代理/策略/观察者/模板方法，及 Spring 中的模式应用。",
+    "工程实践 & 架构设计 & 项目深挖": "决定薪资上限。高并发高可用、限流熔断、接口幂等、秒杀设计、线上排查（CPU 飙升/OOM/慢接口）、Git 规范、RESTful、架构演进。"
+  },
+  "questions": [
+    {
+      "id": "deadlock",
+      "title": "写出 Java 死锁的情况",
+      "category": "Java 并发编程",
+      "tags": ["死锁", "synchronized", "多线程", "手写代码"],
+      "difficulty": "中",
+      "file": "deadlock.md"
+    },
+    {
+      "id": "thread-states",
+      "title": "Java 线程的 6 种状态与生命周期",
+      "category": "Java 并发编程",
+      "tags": ["线程状态", "sleep", "wait", "生命周期"],
+      "difficulty": "中",
+      "file": "thread-states.md"
+    },
+    {
+      "id": "thread-create",
+      "title": "Java 创建线程的 4 种方式",
+      "category": "Java 并发编程",
+      "tags": ["线程创建", "Runnable", "Callable", "线程池"],
+      "difficulty": "易",
+      "file": "thread-create.md"
+    },
+    {
+      "id": "thread-vs-runnable",
+      "title": "Thread 和 Runnable 的区别与联系",
+      "category": "Java 并发编程",
+      "tags": ["Thread", "Runnable", "线程创建", "run/start", "单继承", "解耦"],
+      "difficulty": "易",
+      "file": "thread-vs-runnable.md"
+    }
+  ]
+}

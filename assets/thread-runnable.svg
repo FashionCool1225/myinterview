@@ -1,0 +1,43 @@
+<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#5eead4"/>
+    </marker>
+  </defs>
+  <rect width="680" height="400" fill="#0f172a"/>
+  <text x="340" y="36" text-anchor="middle" fill="#e6eaf0" font-size="18" font-weight="700">Thread 与 Runnable 的关系</text>
+
+  <rect x="40" y="78" width="250" height="118" rx="12" fill="#1e293b" stroke="#2dd4bf" stroke-width="2"/>
+  <text x="165" y="110" text-anchor="middle" fill="#5eead4" font-size="15" font-weight="700">interface Runnable</text>
+  <line x1="60" y1="124" x2="270" y2="124" stroke="#283040" stroke-width="1"/>
+  <text x="165" y="150" text-anchor="middle" fill="#e6eaf0" font-size="14">void run()</text>
+  <text x="165" y="176" text-anchor="middle" fill="#93a0b0" font-size="11">只描述“要执行的任务”</text>
+  <text x="165" y="194" text-anchor="middle" fill="#93a0b0" font-size="11">不创建、不管理线程</text>
+
+  <rect x="390" y="68" width="250" height="158" rx="12" fill="#1e293b" stroke="#2dd4bf" stroke-width="2"/>
+  <text x="515" y="100" text-anchor="middle" fill="#5eead4" font-size="15" font-weight="700">class Thread</text>
+  <text x="515" y="120" text-anchor="middle" fill="#93a0b0" font-size="11">implements Runnable</text>
+  <line x1="410" y1="132" x2="620" y2="132" stroke="#283040" stroke-width="1"/>
+  <text x="515" y="158" text-anchor="middle" fill="#e6eaf0" font-size="14">+ void start()</text>
+  <text x="515" y="182" text-anchor="middle" fill="#e6eaf0" font-size="14">+ void run()</text>
+  <text x="515" y="208" text-anchor="middle" fill="#93a0b0" font-size="10">run() 内部调用 target.run()</text>
+
+  <path d="M388,150 C344,150 320,140 292,135" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+  <text x="336" y="128" text-anchor="middle" fill="#5eead4" font-size="11">implements</text>
+
+  <rect x="40" y="262" width="600" height="110" rx="12" fill="#16202e" stroke="#283040" stroke-width="1"/>
+  <text x="60" y="288" fill="#e6eaf0" font-size="12" font-weight="600">调用链：new Thread(task).start()</text>
+  <rect x="60" y="300" width="86" height="30" rx="8" fill="#1e293b" stroke="#2dd4bf" stroke-width="1.5"/>
+  <text x="103" y="320" text-anchor="middle" fill="#e6eaf0" font-size="13">start()</text>
+  <path d="M148,315 H172" stroke="#5eead4" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="210" y="319" text-anchor="middle" fill="#93a0b0" font-size="11">JVM 创建新线程</text>
+  <path d="M268,315 H292" stroke="#5eead4" stroke-width="2" marker-end="url(#ah)"/>
+  <rect x="294" y="300" width="86" height="30" rx="8" fill="#1e293b" stroke="#2dd4bf" stroke-width="1.5"/>
+  <text x="337" y="320" text-anchor="middle" fill="#e6eaf0" font-size="13">run()</text>
+  <path d="M382,315 H406" stroke="#5eead4" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="430" y="319" text-anchor="middle" fill="#93a0b0" font-size="11">target != null</text>
+  <path d="M498,315 H522" stroke="#5eead4" stroke-width="2" marker-end="url(#ah)"/>
+  <rect x="524" y="300" width="100" height="30" rx="8" fill="#1e293b" stroke="#5eead4" stroke-width="1.5"/>
+  <text x="574" y="320" text-anchor="middle" fill="#e6eaf0" font-size="13">target.run()</text>
+  <text x="60" y="356" fill="#93a0b0" font-size="10.5">说明：target 即传入的 Runnable 实例；直接调 run() 只是普通方法调用，不会新建线程。</text>
+</svg>

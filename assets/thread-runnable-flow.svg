@@ -1,0 +1,51 @@
+<svg viewBox="0 0 680 380" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#5eead4"/>
+    </marker>
+  </defs>
+  <rect width="680" height="380" fill="#0f172a"/>
+  <text x="340" y="30" text-anchor="middle" fill="#e6eaf0" font-size="17" font-weight="700">start() → target.run() 源码级调用链</text>
+
+  <!-- 左泳道：调用线程 -->
+  <rect x="40" y="50" width="270" height="42" rx="10" fill="#1e293b" stroke="#2dd4bf" stroke-width="2"/>
+  <text x="175" y="76" text-anchor="middle" fill="#5eead4" font-size="13" font-weight="700">调用线程（如 main）</text>
+  <line x1="175" y1="92" x2="175" y2="360" stroke="#283040" stroke-width="1.5"/>
+
+  <!-- 右泳道：新线程 -->
+  <rect x="370" y="50" width="270" height="42" rx="10" fill="#1e293b" stroke="#2dd4bf" stroke-width="2"/>
+  <text x="505" y="76" text-anchor="middle" fill="#5eead4" font-size="13" font-weight="700">新线程（JVM 创建）</text>
+  <line x1="505" y1="92" x2="505" y2="360" stroke="#283040" stroke-width="1.5"/>
+
+  <!-- m1 -->
+  <text x="175" y="120" text-anchor="middle" fill="#e6eaf0" font-size="12">new Thread(task).start()</text>
+  <path d="M180,128 H500" stroke="#5eead4" stroke-width="2" marker-end="url(#ah)"/>
+
+  <!-- m2 左泳道内部步骤 -->
+  <rect x="58" y="140" width="234" height="28" rx="6" fill="#16202e" stroke="#283040"/>
+  <text x="175" y="159" text-anchor="middle" fill="#e6eaf0" font-size="10.5">start(): 校验 threadStatus + group.add(this)</text>
+
+  <!-- m3 -->
+  <text x="175" y="192" text-anchor="middle" fill="#5eead4" font-size="12">start0()  [native]</text>
+  <path d="M180,200 H500" stroke="#5eead4" stroke-width="2" marker-end="url(#ah)"/>
+
+  <!-- m4 JVM -->
+  <rect x="328" y="204" width="354" height="26" rx="6" fill="#16202e" stroke="#5eead4"/>
+  <text x="505" y="221" text-anchor="middle" fill="#93a0b0" font-size="11">JVM 创建并启动操作系统线程</text>
+
+  <!-- m5 Thread.run -->
+  <rect x="388" y="238" width="234" height="26" rx="6" fill="#16202e" stroke="#283040"/>
+  <text x="505" y="255" text-anchor="middle" fill="#e6eaf0" font-size="12">Thread.run()</text>
+  <path d="M505,264 V270" stroke="#283040" stroke-width="1.5"/>
+
+  <!-- m6 if target -->
+  <rect x="388" y="270" width="234" height="26" rx="6" fill="#16202e" stroke="#283040"/>
+  <text x="505" y="287" text-anchor="middle" fill="#e6eaf0" font-size="12">if (target != null) target.run()</text>
+  <path d="M505,296 V302" stroke="#283040" stroke-width="1.5"/>
+
+  <!-- m7 task.run -->
+  <rect x="388" y="302" width="234" height="26" rx="6" fill="#1e293b" stroke="#5eead4"/>
+  <text x="505" y="319" text-anchor="middle" fill="#e6eaf0" font-size="12">task.run()  ← 你的业务代码</text>
+
+  <text x="175" y="350" text-anchor="middle" fill="#93a0b0" font-size="10">直接调 run() 会跳过 start0()，在当前线程同步执行</text>
+</svg>

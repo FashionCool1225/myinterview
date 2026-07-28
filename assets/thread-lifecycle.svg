@@ -1,0 +1,70 @@
+<svg viewBox="0 0 680 480" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Java 线程状态生命周期</title>
+  <desc>Java 线程六种状态及转换：NEW、RUNNABLE、BLOCKED、WAITING、TIMED_WAITING、TERMINATED</desc>
+  <style>
+    text { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <g>
+    <rect x="270" y="46" width="140" height="48" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+    <text x="340" y="70" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#2C2C2A">NEW 新建</text>
+  </g>
+
+  <g>
+    <rect x="270" y="150" width="140" height="48" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+    <text x="340" y="174" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#173404">RUNNABLE 可运行</text>
+  </g>
+
+  <g>
+    <rect x="60" y="300" width="150" height="48" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+    <text x="135" y="324" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#412402">BLOCKED 阻塞</text>
+  </g>
+
+  <g>
+    <rect x="275" y="300" width="130" height="48" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text x="340" y="324" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#042C53">WAITING 等待</text>
+  </g>
+
+  <g>
+    <rect x="470" y="300" width="170" height="48" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+    <text x="555" y="324" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#26215C">TIMED_WAITING 超时</text>
+  </g>
+
+  <g>
+    <rect x="270" y="410" width="140" height="48" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+    <text x="340" y="434" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#501313">TERMINATED 终止</text>
+  </g>
+
+  <path d="M340,94 L340,150" fill="none" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="350" y="124" font-size="11" fill="#5F5E5A">start()</text>
+
+  <path d="M300,198 Q 200,220 175,300" fill="none" stroke="#854F0B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="150" y="238" font-size="11" fill="#854F0B">抢 synchronized 失败</text>
+
+  <path d="M150,300 Q 250,250 300,174" fill="none" stroke="#3B6D11" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="190" y="270" font-size="11" fill="#3B6D11">获取到锁</text>
+
+  <path d="M340,198 L340,300" fill="none" stroke="#185FA5" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="350" y="252" font-size="11" fill="#185FA5">wait()/join()/park()</text>
+
+  <path d="M400,300 Q 440,250 380,174" fill="none" stroke="#185FA5" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="420" y="244" font-size="11" fill="#185FA5">notify()/unpark()</text>
+
+  <path d="M380,198 Q 480,220 505,300" fill="none" stroke="#534AB7" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="455" y="238" font-size="11" fill="#534AB7">sleep()/wait(ms)</text>
+
+  <path d="M600,300 Q 520,250 480,174" fill="none" stroke="#534AB7" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="560" y="270" font-size="11" fill="#534AB7">超时/唤醒</text>
+
+  <path d="M410,174 Q 640,200 410,410" fill="none" stroke="#A32D2D" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="600" y="300" font-size="11" fill="#A32D2D">run() 结束</text>
+
+  <path d="M340,348 L340,410" fill="none" stroke="#A32D2D" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+</svg>
