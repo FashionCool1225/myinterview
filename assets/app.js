@@ -159,6 +159,20 @@ function renderSearch(main){
   bindCards(main);
 }
 
+// 确保 Markdown 渲染库已就绪：若全局 marked 缺失（脚本未加载/被缓存），
+// 动态补载本地 marked.min.js 后再继续，避免 "marked is not defined"。
+function ensureMarked(){
+  return new Promise((resolve, reject) => {
+    if (typeof marked !== "undefined" && typeof marked.parse === "function") return resolve();
+    const s = document.createElement("script");
+    s.src = "assets/marked.min.js";
+    s.onload = () => (typeof marked !== "undefined" && typeof marked.parse === "function")
+      ? resolve() : reject(new Error("marked 未定义"));
+    s.onerror = () => reject(new Error("marked.min.js 加载失败（检查 assets/marked.min.js 是否存在）"));
+    document.head.appendChild(s);
+  });
+}
+
 function renderQuestion(main, id){
   const q = state.questions.find(x => x.id === id);
   if(!q){ main.innerHTML = `<div class="error">未找到该题目。</div>`; return; }
@@ -197,7 +211,8 @@ function renderQuestion(main, id){
   $("#bcAll").addEventListener("click", e => { e.preventDefault(); gotoAll(); });
   $("#bcCat").addEventListener("click", e => { e.preventDefault(); gotoCategory(q.category); });
   main.querySelectorAll(".p-btn[data-go]").forEach(b => b.addEventListener("click", () => gotoQuestion(b.dataset.go)));
-  fetch("questions/" + q.file)
+  ensureMarked()
+    .then(() => fetch("questions/" + q.file))
     .then(r => { if(!r.ok) throw new Error(r.status); return r.text(); })
     .then(md => { const doc = $("#doc"); if(doc) doc.innerHTML = marked.parse(md); })
     .catch(e => { const d = $("#doc"); if(d) d.outerHTML = `<div class="error">文档读取失败：${e.message}</div>`; });
