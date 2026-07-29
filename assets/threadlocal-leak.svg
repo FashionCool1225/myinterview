@@ -1,0 +1,32 @@
+<svg viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#5eead4"/>
+    </marker>
+    <marker id="ahr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#f87171"/>
+    </marker>
+  </defs>
+  <rect width="680" height="340" fill="#0f172a"/>
+  <text x="340" y="34" text-anchor="middle" fill="#e6eaf0" font-size="17" font-weight="700">内存泄漏：弱引用 key 被回收，强引用 value 残留</text>
+
+  <rect x="360" y="120" width="300" height="170" rx="14" fill="#1e293b" stroke="#2dd4bf" stroke-width="2"/>
+  <text x="510" y="146" text-anchor="middle" fill="#5eead4" font-size="14" font-weight="700">Thread（线程池中长期存活）</text>
+  <rect x="380" y="158" width="260" height="36" rx="8" fill="#16202e" stroke="#283040" stroke-width="1.5"/>
+  <text x="510" y="180" text-anchor="middle" fill="#93a0b0" font-size="12">ThreadLocalMap</text>
+  <rect x="400" y="206" width="220" height="60" rx="10" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="510" y="228" text-anchor="middle" fill="#e6eaf0" font-size="13">Entry</text>
+  <text x="510" y="250" text-anchor="middle" fill="#fbbf24" font-size="11">key = null（已被 GC 回收）</text>
+
+  <rect x="40" y="200" width="200" height="58" rx="10" fill="#1e293b" stroke="#f87171" stroke-width="2"/>
+  <text x="140" y="230" text-anchor="middle" fill="#fca5a5" font-size="14" font-weight="700">value 业务对象</text>
+  <path d="M400 236 C 320 236, 300 228, 240 228" fill="none" stroke="#f87171" stroke-width="1.8" marker-end="url(#ahr)"/>
+  <text x="320" y="262" text-anchor="middle" fill="#f87171" font-size="11">强引用 → 无法回收（泄漏）</text>
+
+  <rect x="360" y="30" width="240" height="50" rx="10" fill="#1e293b" stroke="#2dd4bf" stroke-width="2"/>
+  <text x="480" y="58" text-anchor="middle" fill="#5eead4" font-size="14" font-weight="700">ThreadLocal 实例</text>
+  <path d="M400 206 C 380 150, 430 80, 470 80" fill="none" stroke="#5eead4" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+  <text x="300" y="130" text-anchor="middle" fill="#5eead4" font-size="11">弱引用（强引用消失后被 GC）</text>
+
+  <text x="340" y="318" text-anchor="middle" fill="#93a0b0" font-size="11.5">key 用弱引用便于回收，但 value 是强引用 → 线程不复用 / 不复用 remove 就会泄漏与串号</text>
+</svg>

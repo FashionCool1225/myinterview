@@ -1,0 +1,45 @@
+<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#5eead4"/>
+    </marker>
+  </defs>
+  <rect width="680" height="400" fill="#0f172a"/>
+  <text x="340" y="34" text-anchor="middle" fill="#e6eaf0" font-size="17" font-weight="700">ThreadLocal 与 Thread 的关系：数据归线程所有</text>
+
+  <rect x="240" y="50" width="200" height="46" rx="10" fill="#1e293b" stroke="#2dd4bf" stroke-width="2"/>
+  <text x="340" y="78" text-anchor="middle" fill="#5eead4" font-size="14" font-weight="700">ThreadLocal&#60;String&#62; tl</text>
+
+  <rect x="40" y="150" width="180" height="210" rx="12" fill="#1e293b" stroke="#2dd4bf" stroke-width="2"/>
+  <text x="130" y="178" text-anchor="middle" fill="#5eead4" font-size="14" font-weight="700">Thread-1</text>
+  <rect x="55" y="195" width="150" height="40" rx="8" fill="#16202e" stroke="#283040" stroke-width="1.5"/>
+  <text x="130" y="219" text-anchor="middle" fill="#93a0b0" font-size="12">threadLocals</text>
+  <rect x="55" y="245" width="150" height="34" rx="6" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="130" y="267" text-anchor="middle" fill="#fde68a" font-size="13">key=tl → "A"</text>
+  <rect x="55" y="288" width="150" height="34" rx="6" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="130" y="310" text-anchor="middle" fill="#fde68a" font-size="13">key=tl2 → "X"</text>
+  <text x="130" y="345" text-anchor="middle" fill="#e6eaf0" font-size="12">tl.get() = "A"</text>
+
+  <rect x="250" y="150" width="180" height="210" rx="12" fill="#1e293b" stroke="#2dd4bf" stroke-width="2"/>
+  <text x="340" y="178" text-anchor="middle" fill="#5eead4" font-size="14" font-weight="700">Thread-2</text>
+  <rect x="265" y="195" width="150" height="40" rx="8" fill="#16202e" stroke="#283040" stroke-width="1.5"/>
+  <text x="340" y="219" text-anchor="middle" fill="#93a0b0" font-size="12">threadLocals</text>
+  <rect x="265" y="245" width="150" height="34" rx="6" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="340" y="267" text-anchor="middle" fill="#fde68a" font-size="13">key=tl → "B"</text>
+  <text x="340" y="345" text-anchor="middle" fill="#e6eaf0" font-size="12">tl.get() = "B"</text>
+
+  <rect x="460" y="150" width="180" height="210" rx="12" fill="#1e293b" stroke="#2dd4bf" stroke-width="2"/>
+  <text x="550" y="178" text-anchor="middle" fill="#5eead4" font-size="14" font-weight="700">Thread-3</text>
+  <rect x="475" y="195" width="150" height="40" rx="8" fill="#16202e" stroke="#283040" stroke-width="1.5"/>
+  <text x="550" y="219" text-anchor="middle" fill="#93a0b0" font-size="12">threadLocals</text>
+  <rect x="475" y="245" width="150" height="34" rx="6" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="550" y="267" text-anchor="middle" fill="#fde68a" font-size="13">key=tl → "C"</text>
+  <text x="550" y="345" text-anchor="middle" fill="#e6eaf0" font-size="12">tl.get() = "C"</text>
+
+  <path d="M340 96 C 340 140, 130 150, 130 193" fill="none" stroke="#5eead4" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+  <path d="M340 96 C 340 140, 340 150, 340 193" fill="none" stroke="#5eead4" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+  <path d="M340 96 C 340 140, 550 150, 550 193" fill="none" stroke="#5eead4" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+  <text x="340" y="125" text-anchor="middle" fill="#5eead4" font-size="11">同一个 key，不同 value</text>
+
+  <text x="340" y="385" text-anchor="middle" fill="#93a0b0" font-size="11.5">threadLocals 是 Thread 的字段 → 数据跟着线程走，线程之间彼此隔离</text>
+</svg>

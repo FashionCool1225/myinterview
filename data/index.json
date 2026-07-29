@@ -59,6 +59,14 @@
       "tags": ["Thread", "Runnable", "线程创建", "run/start", "单继承", "解耦"],
       "difficulty": "易",
       "file": "thread-vs-runnable.md"
+    },
+    {
+      "id": "threadlocal",
+      "title": "ThreadLocal 是什么？与线程的关系及用法",
+      "category": "Java 并发编程",
+      "tags": ["ThreadLocal", "线程隔离", "内存泄漏", "弱引用", "线程池", "remove"],
+      "difficulty": "中",
+      "file": "threadlocal.md"
     }
   ]
 }
